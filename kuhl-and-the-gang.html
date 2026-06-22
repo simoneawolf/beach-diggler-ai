@@ -7,16 +7,108 @@
   <title>Kuhl and the Gang</title>
 
   <style>
-    body {
-      margin: 0;
-    }
-  </style>
+  .ai-box {
+    font-family: Arial, sans-serif;
+    background: #020617;
+    color: #f8fafc;
+    padding: 28px;
+    border-radius: 22px;
+    text-align: center;
+    border: 3px solid #38bdf8;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    color: #38bdf8;
+  }
+
+  h2 {
+    margin-top: 8px;
+    font-size: 18px;
+    color: #facc15;
+  }
+
+  p {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .bar {
+    height: 22px;
+    background: #1e293b;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 0 auto 18px auto;
+    max-width: 520px;
+  }
+
+  .fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #38bdf8, #22c55e, #facc15);
+  }
+
+  .one { animation: load1 3s infinite; }
+  .two { animation: load2 3.5s infinite; }
+  .three { animation: load3 4.1s infinite; }
+
+  @keyframes load1 {
+    0% { width: 0%; }
+    60% { width: 95%; }
+    100% { width: 100%; }
+  }
+
+  @keyframes load2 {
+    0% { width: 0%; }
+    65% { width: 71%; }
+    100% { width: 100%; }
+  }
+
+  @keyframes load3 {
+    0% { width: 0%; }
+    50% { width: 88%; }
+    100% { width: 100%; }
+  }
+
+  .result {
+    margin-top: 24px;
+    background: #075985;
+    padding: 18px;
+    border-radius: 16px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+</style>
 </head>
 
 <body>
 
-<!-- HIER dein kompletter AI-Code -->
+<div class="ai-box">
+  <h1>🐄 KUHL AND THE GANG ANALYSIS</h1>
+  <h2>Groove, Grassland & Ball Control Model</h2>
+
+  <p>Measuring funk level...</p>
+  <div class="bar"><div class="fill one"></div></div>
+
+  <p>Analyzing herd movement pattern...</p>
+  <div class="bar"><div class="fill two"></div></div>
+
+  <p>Detecting dangerously kuhl confidence...</p>
+  <div class="bar"><div class="fill three"></div></div>
+
+  <div class="result">
+    ✅ AI RESULT:<br>
+    Team appears extremely kuhl.<br>
+    However: grassland mobility on sand is limited.<br><br>
+    Recommended strategy:<br>
+    BREAK THE GROOVE. SERVE THE MOO-VE.
+  </div>
+</div>
+
+
 
 </body>
 </html>
-``
+
