@@ -19,30 +19,11 @@
     }
 
    
+
 body {
   font-family: Arial, sans-serif;
   min-height: 100vh;
-
-  background-image:
-    linear-gradient(
-      rgba(2, 6, 23, 0.62),
-      rgba(2, 6, 23, 0.78)
-    ),
-    url("assets/einhorn.png");
-
-  background-size:
-    cover,
-    200px auto;
-
-  background-position:
-    center,
-    center;
-
-  background-repeat:
-    no-repeat,
-    repeat;
-
-  background-color: #020617;
+  background: #020617;
 
   color: #ffffff;
   display: flex;
@@ -50,22 +31,57 @@ body {
   justify-content: center;
   padding: clamp(18px, 5vw, 42px);
   overflow-x: hidden;
+
+  position: relative;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
 
-    .warning-box {
-      width: min(900px, 100%);
-      padding: clamp(24px, 6vw, 52px);
-      border-radius: clamp(20px, 4vw, 34px);
-      background: rgba(2, 6, 23, 0.68);
-      border: 3px solid #ef4444;
-      box-shadow:
-        0 0 30px rgba(239, 68, 68, 0.55),
-        0 0 70px rgba(239, 68, 68, 0.28),
-        inset 0 0 22px rgba(239, 68, 68, 0.18);
-      text-align: center;
-      backdrop-filter: blur(6px);
-    }
+  background-image: url("assets/einhorn.png");
+  background-size: 200px auto;
+  background-repeat: repeat;
+  background-position: center;
+
+  opacity: 0.45;
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: linear-gradient(
+    rgba(2, 6, 23, 0.45),
+    rgba(2, 6, 23, 0.70)
+  );
+
+  z-index: -1;
+}
+  margin: 0;
+  padding: 0;
+
+
+
+    
+.warning-box {
+  position:(900px, 100%);  position: relative;
+  padding: clamp(24px, 6vw, 52px);
+  border-radius: clamp(20px, 4vw, 34px);
+  background: rgba(2, 6, 23, 0.68);
+  border: 3px solid #ef4444;
+  box-shadow:
+    0 0 30px rgba(239, 68, 68, 0.55),
+    0 0 70px rgba(239, 68, 68, 0.28),
+    inset 0 0 22px rgba(239, 68, 68, 0.18);
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+  z-index: 1;
+
 
     .warning-text {
       margin: 0;
