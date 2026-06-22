@@ -19,24 +19,27 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      min-height: 100vh;
-      background:
-        linear-gradient(
-          rgba(2, 6, 23, 0.35),
-          rgba(2, 6, 23, 0.55)
-        ),
-        url("assets/einhorn.jfif");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(18px, 5vw, 42px);
-      overflow-x: hidden;
-    }
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      rgba(2, 6, 23, 0.25),
+      rgba(2, 6, 23, 0.45)
+    ),
+    url("assets/einhorn.jfif");
+
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #020617;
+
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(18px, 5vw, 42px);
+  overflow-x: hidden;
+}
 
     .warning-box {
       width: min(900px, 100%);
