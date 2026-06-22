@@ -298,12 +298,90 @@
         grid-template-columns: 1fr;
       }
     }
+
+    <!--Startseite-->
+    .hero-click-wrapper {
+      position: relative;
+      width: 100%;
+      display: block;
+    }
+    
+    .hero-click-wrapper .hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .hero-hotspot {
+      position: absolute;
+      display: block;
+      z-index: 5;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    
+    /* Optional zum Testen sichtbar machen */
+    
+    .hero-hotspot {
+      background: rgba(255, 0, 0, 0.25);
+      border: 2px solid red;
+    }
+    
+    
+    /* Button 1: The ExPendables2 */
+    .hotspot-expendables {
+      left: 44.2%;
+      top: 63.0%;
+      width: 6.2%;
+      height: 15.0%;
+    }
+    
+    /* Button 2: Kuhl and the Gang */
+    .hotspot-kuhl {
+      left: 51.2%;
+      top: 63.0%;
+      width: 6.5%;
+      height: 15.0%;
+    }
+    
+    /* Button 3: Kontrollpunktblocker */
+    .hotspot-checkpoint {
+      left: 58.6%;
+      top: 63.0%;
+      width: 6.7%;
+      height: 15.0%;
+    }
+    
+    /* Button 4: Team Fungi */
+    .hotspot-fungi {
+      left: 66.0%;
+      top: 63.0%;
+      width: 6.9%;
+      height: 15.0%;
+    }
+    
+    /* Button 5: TOP SPIN */
+    .hotspot-topspin {
+      left: 73.5%;
+      top: 63.0%;
+      width: 6.7%;
+      height: 15.0%;
+    }
+
+    <!--Startseite-->
   </style>
 </head>
 
 <body>
    <!-- Startseitenbild -->
-    <img class="hero-image full-width-hero" src="assets/Startseite_v2.png" alt="Beach Diggler AI Startseite">
+    <div class="hero-click-wrapper">
+  <img class="hero-image full-width-hero" src="assets/Startseite_v2.png" alt="Beach Diggler AI Startseite">
+    <a class="hero-hotspot hotspot-expendables" href="expendables.html" aria-label="Analyze The ExPendables2"></a>
+    <a class="hero-hotspot hotspot-kuhl" href="kuhl-and-the-gang.html" aria-label="Analyze Kuhl and the Gang"></a>
+    <a class="hero-hotspot hotspot-checkpoint" href="checkpoint.html" aria-label="Analyze Kontrollpunktblocker"></a>
+    <a class="hero-hotspot hotspot-fungi" href="fungi.html" aria-label="Analyze Team Fungi"></a>
+    <a class="hero-hotspot hotspot-topspin" href="topspin.html" aria-label="Analyze TOP SPIN"></a>
+  </div>
 
   <main class="page-wrapper">
 
