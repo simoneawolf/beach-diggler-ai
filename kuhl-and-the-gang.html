@@ -107,6 +107,151 @@
   </div>
 </div>
 
+<!-- next section -->
+  <style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; overflow: hidden; }
+
+  .page {
+    min-height: 760px;
+    padding: 28px;
+    font-family: Arial, sans-serif;
+    color: #f8fafc;
+    background:
+      radial-gradient(circle at 20% 25%, rgba(56,189,248,0.36), transparent 30%),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.16), transparent 28%),
+      linear-gradient(135deg, #020617, #083344, #0f172a);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page::before {
+    content: "MOO  AI  CHILL  GROOVE  KUHL  DATA  LOW TEMP  MOO  BACKEND DEFENSE";
+    position: absolute;
+    inset: -80px;
+    color: rgba(56,189,248,0.12);
+    font-size: 34px;
+    line-height: 80px;
+    transform: rotate(-15deg);
+    animation: drift 18s linear infinite;
+  }
+
+  .panel {
+    position: relative;
+    z-index: 2;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 28px;
+    border-radius: 28px;
+    background: rgba(2, 6, 23, 0.82);
+    border: 2px solid #38bdf8;
+    box-shadow: 0 0 45px rgba(56,189,248,0.35);
+  }
+
+  .header { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 22px; }
+  .tag { color: #38bdf8; font-size: 13px; letter-spacing: 1.5px; font-weight: bold; }
+  h1 { margin: 6px 0 0 0; font-size: 38px; color: #facc15; }
+  h2 { margin: 6px 0 0 0; font-size: 18px; color: #cbd5e1; }
+
+  .confidence {
+    width: 110px; height: 110px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: conic-gradient(#38bdf8, #facc15, #38bdf8);
+    color: #020617; font-size: 28px; font-weight: bold;
+    box-shadow: 0 0 30px rgba(56,189,248,0.35);
+  }
+
+  .scan p { margin-bottom: 8px; color: #e2e8f0; font-weight: bold; }
+  .bar { height: 22px; background: #1e293b; border-radius: 999px; overflow: hidden; margin-bottom: 24px; }
+  .fill { height: 100%; width: 0%; background: linear-gradient(90deg, #38bdf8, #22c55e, #facc15); animation: load 3s infinite; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .card, .quote {
+    background: rgba(15, 23, 42, 0.92);
+    border: 1px solid rgba(56,189,248,0.45);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 0 18px rgba(56,189,248,0.13);
+  }
+
+  .card h3 { margin: 0 0 10px 0; color: #38bdf8; font-size: 17px; }
+  .card p { margin: 0; line-height: 1.45; font-size: 15px; }
+  .warning { border-color: #facc15; }
+  .meme { border-color: #a855f7; }
+
+  .quote {
+    grid-column: span 2;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #facc15;
+    border-color: #facc15;
+  }
+
+  @keyframes load { 0% { width: 0%; } 60% { width: 92%; } 100% { width: 100%; } }
+  @keyframes drift { from { transform: translateX(0) rotate(-15deg); } to { transform: translateX(-220px) rotate(-15deg); } }
+
+  @media (max-width: 700px) {
+    .page { min-height: 940px; padding: 14px; }
+    .panel { padding: 18px; border-radius: 20px; }
+    .header { flex-direction: column; align-items: center; text-align: center; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 15px; }
+    .confidence { width: 84px; height: 84px; font-size: 22px; }
+    .grid { grid-template-columns: 1fr; gap: 12px; }
+    .quote { grid-column: span 1; font-size: 18px; }
+    .card p { font-size: 14px; }
+  }
+</style>
+  <div class="page kuhl">
+  <div class="panel">
+    <div class="header">
+      <div>
+        <div class="tag">BEACH DIGGLER AI // COOLNESS SCAN</div>
+        <h1>🐄 Kuhl and the Gang</h1>
+        <h2>Kuhlness, Groove & Sand Mobility Analysis</h2>
+      </div>
+    </div>
+
+    <div class="scan">
+      <p>Measuring dangerous chill levels...</p>
+      <div class="bar"><div class="fill"></div></div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>🧠 <KI-Analysis</KI-Analy></h3>
+        <p>The AI registers extremely high “coolness” scores, but contact with sand risks causing thermal instability: too cool for heated rallies.</p>
+      </div>
+
+      <div class="card">
+        <h3>💻 GitHub-Results</h3>
+        <p>Commit messages: “chill,” “even chillier,” “really, truly chill.” The productivity curve looks like a lounge chair.</p>
+      </div>
+
+      <div class="card warning">
+        <h3>⚠ Identified Vulnerability</h3>
+        <p>Too much style on the front end, not enough backend defense.</p>
+      </div>
+
+      <div class="card">
+        <h3>🏐 Beach-Diggler-Countermeasures</h3>
+        <p>Increase the speed until Chill Mode is included in the power-saving plan.</p>
+      </div>
+
+      <div class="quote">
+        „Kuhl and the Gang - but the Beach-Diggler guys are really on fire.“
+      </div>
+
+      <!-- <div class="card meme">
+        <h3>😎 Bild-/Meme-Idee</h3>
+        <p>Sonnenbrillen-Team vor Dashboard: CPU-Temperatur „zu cool“, Score „zu niedrig“.</p>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+
 
 
 </body>
