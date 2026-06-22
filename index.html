@@ -1,67 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Beach Diggler AI</title>
-  <img src="assets/Startseite_v2.png" style="width:100%;">
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
     body {
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background: #020617;
-      color: white;
-      text-align: center;
-      padding: 20px;
+      background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 35%),
+        linear-gradient(135deg, #020617, #0f172a, #020617);
+      color: #f8fafc;
+      min-height: 100vh;
     }
 
-    h1 {
-      color: #38bdf8;
-      font-size: 32px;
+    .page-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(14px, 4vw, 32px);
     }
 
-    h2 {
-      color: #facc15;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    a {
+    .hero-image {
+      width: 100%;
+      border-radius: clamp(16px, 3vw, 28px);
       display: block;
-      padding: 20px;
-      border-radius: 20px;
-      text-decoration: none;
-      color: white;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      border: 2px solid #38bdf8;
-      transition: 0.2s;
+      box-shadow: 0 0 36px rgba(56, 189, 248, 0.35);
+      border: 2px solid rgba(56, 189, 248, 0.7);
+      margin-bottom: clamp(22px, 5vw, 42px);
     }
 
-    a:hover {
-      transform: scale(1.05);
+    .section-title {
+      text-align: center;
+      margin: 0 0 22px 0;
+      color: #38bdf8;
+      font-size: clamp(24px, 6vw, 38px);
+      letter-spacing: 1px;
+    }
+
+    .diagram-section {
+      margin-bottom: clamp(26px, 6vw, 48px);
+    }
+
+    .diagram-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(18px, 4vw, 32px);
+      align-items: start;
+    }
+
+    .diagram-card {
+      background: rgba(15, 23, 42, 0.9);
+      border: 2px solid rgba(56, 189, 248, 0.65);
+      border-radius: clamp(16px, 3vw, 24px);
+      padding: clamp(12px, 3vw, 18px);
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.22);
+    }
+
+    .diagram-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: clamp(12px, 2.5vw, 18px);
+      background: #020617;
+    }
+
+    .caption {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #0b1f3a;
+      color: #dbeafe;
+      font-size: clamp(13px, 3.2vw, 16px);
+      line-height: 1.35;
+      font-weight: bold;
+      text-align: center;
+      border: 1px solid rgba(59, 130, 246, 0.5);
+    }
+
+    .ai-box {
+      width: 100%;
+      max-width: 100%;
+      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.24), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.18), transparent 32%),
+        #020617;
+      color: #f8fafc;
+      padding: clamp(14px, 5vw, 28px);
+      border-radius: clamp(14px, 4vw, 22px);
+      text-align: center;
+      border: 3px solid #38bdf8;
+      box-shadow: 0 0 28px rgba(56, 189, 248, 0.28);
+      margin-bottom: clamp(28px, 6vw, 52px);
+    }
+
+    .ai-box h1 {
+      margin: 0;
+      font-size: clamp(22px, 7vw, 30px);
+      color: #38bdf8;
+      line-height: 1.15;
+    }
+
+    .ai-box h2 {
+      margin-top: 8px;
+      font-size: clamp(15px, 4.5vw, 18px);
+      color: #facc15;
+      line-height: 1.2;
+    }
+
+    .ai-box p {
+      margin-bottom: 8px;
+      font-size: clamp(13px, 4vw, 16px);
+    }
+
+    .bar {
+      width: 100%;
+      height: clamp(16px, 5vw, 22px);
+      background: #1e293b;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0 auto 16px auto;
+      max-width: 520px;
+    }
+
+    .fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #22c55e, #38bdf8, #facc15);
+    }
+
+    .one {
+      animation: load1 3s infinite;
+    }
+
+    .two {
+      animation: load2 3.6s infinite;
+    }
+
+    .three {
+      animation: load3 4.2s infinite;
+    }
+
+    @keyframes load1 {
+      0% { width: 0%; }
+      60% { width: 88%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes load2 {
+      0% { width: 0%; }
+      70% { width: 74%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes load3 {
+      0% { width: 0%; }
+      50% { width: 97%; }
+      100% { width: 100%; }
+    }
+
+    .result {
+      margin-top: clamp(16px, 5vw, 24px);
+      background: #166534;
+      padding: clamp(12px, 4vw, 18px);
+      border-radius: clamp(12px, 4vw, 16px);
+      font-size: clamp(15px, 4.8vw, 20px);
+      font-weight: bold;
+      line-height: 1.35;
+    }
+
+    .opponent-section {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .opponent-section h2 {
+      margin-bottom: 8px;
+      color: #facc15;
+      font-size: clamp(22px, 5.5vw, 32px);
+    }
+
+    .opponent-section p {
+      color: #cbd5e1;
+      font-size: clamp(14px, 3.8vw, 17px);
+      margin-bottom: 24px;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: clamp(14px, 3vw, 20px);
+    }
+
+    .team-button {
+      display: block;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      text-decoration: none;
+      padding: clamp(16px, 4vw, 24px) clamp(12px, 3vw, 18px);
+      border-radius: 20px;
+      border: 2px solid #38bdf8;
+      font-size: clamp(14px, 3.7vw, 16px);
+      transition: all 0.2s ease;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
+    }
+
+    .team-button:hover {
+      transform: scale(1.04);
+      background: linear-gradient(135deg, #075985, #0f172a);
       border-color: #facc15;
+      box-shadow: 0 0 24px rgba(250, 204, 21, 0.4);
+    }
+
+    .emoji {
+      display: block;
+      font-size: clamp(28px, 8vw, 42px);
+      margin-bottom: 8px;
+    }
+
+    .team-button strong {
+      display: block;
+      margin-top: 4px;
+      color: #facc15;
+      font-size: clamp(15px, 4vw, 18px);
+    }
+
+    .footer {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 13px;
+      margin-top: 34px;
+      padding-bottom: 20px;
+    }
+
+    @media (max-width: 760px) {
+      .diagram-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        margin-bottom: 28px;
+      }
+
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
+  <main class="page-wrapper">
 
-<h1>🏐 BEACH DIGGLER AI</h1>
-<h2>Select Opponent</h2>
+    <!-- Startseitenbild -->
+    <img
+      class="hero-image"
+      src="assets/Startseite_v2.png"
+      alt="Beach Diggler AI futuristic homepage banner"
+    />
 
-<div class="grid">
-  <a href="expendables.html">💸 ExPendables2</a>
-  <a href="kuhl.html">🐄 Kuhl and the Gang</a>
-  <a href="checkpoint.html">🚧 Kontrollpunktblocker</a>
-  <a href="fungi.html">🍄 Team Fungi</a>
-  <a href="topspin.html">🌀 TOP SPIN</a>
-</div>
+    <!-- Diagramme -->
+    <section class="diagram-section">
+      <h2 class="section-title">📊 Pre-Match Intelligence</h2>
 
+      <div class="diagram-grid">
+
+        <figure class="diagram-card">
+          <img
+            src="assets/Commit Energy.png"
+            alt="Commit Energy diagram"
+          />
+          <figcaption class="caption">
+            Commit Energy Analysis: questionable repository activity meets elite sand-based decision making.
+          </figcaption>
+        </figure>
+
+        <figure class="diagram-card">
+          <img
+            src="assets/KI-Analyse.png"
+            alt="KI Analyse diagram"
+          />
+          <figcaption class="caption">
+            KI-Analyse: opponent behavior, tactical chaos and Beach Diggler confidence converted into actionable nonsense.
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- Live Opponent Analysis -->
+    <section class="ai-box">
+      <h1>🏐 BEACH DIGGLER AI</h1>
+      <h2>Live Opponent Analysis</h2>
+
+      <p>Scanning receive weakness...</p>
+      <div class="bar"><div class="fill one"></div></div>
+
+      <p>Predicting next attack...</p>
+      <div class="bar"><div class="fill two"></div></div>
+
+      <p>Calculating sand resistance...</p>
+      <div class="bar"><div class="fill three"></div></div>
+
+      <div class="result">
+        ✅ Recommendation:<br />
+        DIG DEEPER. TRUST THE ALGORITHM.
+      </div>
+    </section>
+
+    <!-- Gegner Buttons -->
+    <section class="opponent-section">
+      <h2>Opponent Selection</h2>
+      <p>Select a team and start the official Beach Diggler AI analysis.</p>
+
+      <div class="button-grid">
+
+        <a class="team-button" href="expendables.html">
+          <span class="emoji">💸</span>
+          Analyze
+          <strong>The ExPendables2</strong>
+        </a>
+
+        <a class="team-button" href="kuhl-and-the-gang.html">
+          <span class="emoji">🐄</span>
+          Analyze
+          <strong>Kuhl and the Gang</strong>
+        </a>
+
+        <a class="team-button" href="checkpoint.html">
+          <span class="emoji">🚧</span>
+          Analyze
+          <strong>Kontrollpunktblocker</strong>
+        </a>
+
+        <a class="team-button" href="fungi.html">
+          <span class="emoji">🍄</span>
+          Analyze
+          <strong>Team Fungi</strong>
+        </a>
+
+        <a class="team-button" href="topspin.html">
+          <span class="emoji">🌀</span>
+          Analyze
+          <strong>TOP SPIN</strong>
+        </a>
+
+      </div>
+    </section>
+
+    <div class="footer">
+      Powered by questionable AI, sand-based sensors and Beach Diggler confidence.
+    </div>
+
+  </main>
 </body>
 </html>
-
