@@ -300,88 +300,98 @@
     }
 
     <!--Startseite-->
-    .hero-click-wrapper {
-      position: relative;
-      width: 100%;
-      display: block;
+    
+    .hero-click-wrapper {.hero%;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      margin-bottom: clamp(22px, 5vw, 42px);
+      background: #020617;
     }
     
-    .hero-click-wrapper .hero-image {
+    .hero-click-image {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
+      object-fit: contain;
     }
     
     .hero-hotspot {
       position: absolute;
-      display: block;
       z-index: 5;
-      border-radius: 10px;
+      display: block;
       text-decoration: none;
+      cursor: pointer;
+      border-radius: 12px;
     }
     
-    /* Optional zum Testen sichtbar machen */
-    
+    /* Nur zum Testen aktivieren */
+    /*
     .hero-hotspot {
       background: rgba(255, 0, 0, 0.25);
       border: 2px solid red;
     }
+    */
     
-    
-    /* Button 1: The ExPendables2 */
+    /* The ExPendables2 */
     .hotspot-expendables {
-      left: 44.2%;
-      top: 75.0%;
+      left: 44.1%;
+      top: 62.5%;
       width: 6.2%;
-      height: 15.0%;
+      height: 15.5%;
     }
     
-    /* Button 2: Kuhl and the Gang */
+    /* Kuhl and the Gang */
     .hotspot-kuhl {
-      left: 51.2%;
-      top: 75.0%;
+      left: 51.1%;
+      top: 62.5%;
       width: 6.5%;
-      height: 15.0%;
+      height: 15.5%;
     }
     
-    /* Button 3: Kontrollpunktblocker */
+    /* Kontrollpunktblocker */
     .hotspot-checkpoint {
-      left: 58.6%;
-      top: 75.0%;
-      width: 6.7%;
-      height: 15.0%;
+      left: 58.4%;
+      top: 62.5%;
+      width: 6.8%;
+      height: 15.5%;
     }
     
-    /* Button 4: Team Fungi */
+    /* Team Fungi */
     .hotspot-fungi {
-      left: 66.0%;
-      top: 75.0%;
+      left: 65.9%;
+      top: 62.5%;
       width: 6.9%;
-      height: 15.0%;
+      height: 15.5%;
     }
     
-    /* Button 5: TOP SPIN */
+    /* TOP SPIN */
     .hotspot-topspin {
-      left: 73.5%;
-      top: 75.0%;
+      left: 73.4%;
+      top: 62.5%;
       width: 6.7%;
-      height: 15.0%;
+      height: 15.5%;
     }
+      position: relative;
+
 
     <!--Startseite-->
   </style>
 </head>
 
 <body>
-   <!-- Startseitenbild -->
-    <div class="hero-click-wrapper">
-  <img class="hero-image full-width-hero" src="assets/Startseite_v2.png" alt="Beach Diggler AI Startseite">
-    <a class="hero-hotspot hotspot-expendables" href="expendables.html" aria-label="Analyze The ExPendables2"></a>
-    <a class="hero-hotspot hotspot-kuhl" href="kuhl-and-the-gang.html" aria-label="Analyze Kuhl and the Gang"></a>
-    <a class="hero-hotspot hotspot-checkpoint" href="checkpoint.html" aria-label="Analyze Kontrollpunktblocker"></a>
-    <a class="hero-hotspot hotspot-fungi" href="fungi.html" aria-label="Analyze Team Fungi"></a>
-    <a class="hero-hotspot hotspot-topspin" href="topspin.html" aria-label="Analyze TOP SPIN"></a>
-  </div>
+   <!-- Startseitenbild -->  
+<div class="hero-click-wrapper">
+  assets/Startseite_v2.png
+
+  <a class="hero-hotspot hotspot-expendables" href="expendables.html" aria-label="Analyze The ExPendables2"></a>
+  <a class="hero-hotspot hotspot-kuhl" href="kuhl-and-the-gang.html" aria-label="Analyze Kuhl and the Gang"></a>
+  <a class="hero-hotspot hotspot-checkpoint" href="checkpoint.html" aria-label="Analyze Kontrollpunktblocker"></a>
+  <a class="hero-hotspot hotspot-fungi" href="fungi.html" aria-label="Analyze Team Fungi"></a>
+  <a class="hero-hotspot hotspot-topspin" href="topspin.html" aria-label="Analyze TOP SPIN"></a>
+</div>
+
 
   <main class="page-wrapper">
 
