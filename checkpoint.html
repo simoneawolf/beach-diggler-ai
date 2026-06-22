@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Kontrollpunktblocker</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #020617;
+      color: #f8fafc;
+    }
+
+    /* ========================= */
+    /* TOP AI BOX SECTION        */
+    /* ========================= */
+
+    .top-section {
+      padding: clamp(16px, 4vw, 32px);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(249,115,22,0.22), transparent 32%),
+        linear-gradient(135deg, #020617, #0f172a, #020617);
+    }
+
+    .ai-box {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+      background: #020617;
+      color: #f8fafc;
+      padding: clamp(18px, 5vw, 28px);
+      border-radius: 22px;
+      text-align: center;
+      border: 3px solid #f97316;
+      box-shadow: 0 0 36px rgba(249,115,22,0.30);
+    }
+
+    .ai-box h1 {
+      margin: 0;
+      font-size: clamp(24px, 7vw, 30px);
+      color: #f97316;
+      line-height: 1.15;
+    }
+
+    .ai-box h2 {
+      margin-top: 8px;
+      font-size: clamp(15px, 4.5vw, 18px);
+      color: #facc15;
+      line-height: 1.25;
+    }
+
+    .ai-box p {
+      margin-bottom: 8px;
+      font-size: clamp(13px, 4vw, 16px);
+    }
+
+    .ai-box .bar {
+      width: 100%;
+      height: clamp(16px, 5vw, 22px);
+      background: #1e293b;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0 auto 18px auto;
+      max-width: 520px;
+    }
+
+    .ai-box .fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f97316, #facc15, #22c55e);
+    }
+
+    .ai-box .one {
+      animation: ai-load1 3.2s infinite;
+    }
+
+    .ai-box .two {
+      animation: ai-load2 3.9s infinite;
+    }
+
+    .ai-box .three {
+      animation: ai-load3 4.5s infinite;
+    }
+
+    @keyframes ai-load1 {
+      0% { width: 0%; }
+      60% { width: 91%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes ai-load2 {
+      0% { width: 0%; }
+      70% { width: 84%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes ai-load3 {
+      0% { width: 0%; }
+      55% { width: 67%; }
+      100% { width: 100%; }
+    }
+
+    .ai-box .result {
+      margin-top: 24px;
+      background: #9a3412;
+      padding: clamp(14px, 4vw, 18px);
+      border-radius: 16px;
+      font-size: clamp(15px, 4.8vw, 20px);
+      font-weight: bold;
+      line-height: 1.35;
+    }
+
+    /* ========================= */
+    /* LARGE DASHBOARD SECTION   */
+    /* ========================= */
+
+    .page {
+      min-height: 760px;
+      padding: clamp(16px, 4vw, 32px);
+      font-family: Arial, sans-serif;
+      color: #f8fafc;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          rgba(249,115,22,0.18) 0px,
+          rgba(249,115,22,0.18) 18px,
+          rgba(2,6,23,0.05) 18px,
+          rgba(2,6,23,0.05) 36px
+        ),
+        radial-gradient(circle at 82% 18%, rgba(250,204,21,0.30), transparent 30%),
+        radial-gradient(circle at 20% 75%, rgba(249,115,22,0.24), transparent 34%),
+        linear-gradient(135deg, #020617, #431407, #111827);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "ACCESS DENIED  AI CHECK  BLOCK  ERROR 403  PERMIT REQUIRED  MERGE CONFLICT";
+      position: absolute;
+      inset: -80px;
+      color: rgba(249,115,22,0.13);
+      font-size: clamp(24px, 6vw, 34px);
+      line-height: 80px;
+      transform: rotate(-16deg);
+      animation: drift 18s linear infinite;
+      pointer-events: none;
+    }
+
+    .panel {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(18px, 4vw, 28px);
+      border-radius: 28px;
+      background: rgba(2, 6, 23, 0.84);
+      border: 2px solid #f97316;
+      box-shadow: 0 0 45px rgba(249,115,22,0.38);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .tag {
+      color: #f97316;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+    }
+
+    .panel h1 {
+      margin: 6px 0 0 0;
+      font-size: clamp(30px, 8vw, 38px);
+      color: #facc15;
+      line-height: 1.1;
+    }
+
+    .panel h2 {
+      margin: 6px 0 0 0;
+      font-size: clamp(15px, 4vw, 18px);
+      color: #cbd5e1;
+      line-height: 1.25;
+    }
+
+    .confidence {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: conic-gradient(#f97316, #facc15, #22c55e, #f97316);
+      color: #020617;
+      font-size: 28px;
+      font-weight: bold;
+      box-shadow: 0 0 30px rgba(249,115,22,0.38);
+      flex-shrink: 0;
+    }
+
+    .scan p {
+      margin-bottom: 8px;
+      color: #e2e8f0;
+      font-weight: bold;
+      font-size: clamp(14px, 3.8vw, 16px);
+    }
+
+    .scan .bar {
+      width: 100%;
+      height: 22px;
+      background: #1e293b;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .scan .fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #f97316, #facc15, #22c55e);
+      animation: scan-load 3.2s infinite;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .card,
+    .quote {
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(249,115,22,0.48);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 0 18px rgba(249,115,22,0.15);
+    }
+
+    .card h3 {
+      margin: 0 0 10px 0;
+      color: #38bdf8;
+      font-size: 17px;
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.45;
+      font-size: 15px;
+    }
+
+    .warning {
+      border-color: #facc15;
+    }
+
+    .meme {
+      border-color: #a855f7;
+    }
+
+    .quote {
+      grid-column: span 2;
+      text-align: center;
+      font-size: clamp(18px, 4.8vw, 22px);
+      font-weight: bold;
+      color: #facc15;
+      border-color: #facc15;
+      line-height: 1.35;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #9a3412, #0f172a);
+      color: #f8fafc;
+      text-decoration: none;
+      border: 2px solid #f97316;
+      font-weight: bold;
+      box-shadow: 0 0 18px rgba(249,115,22,0.25);
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      transform: scale(1.04);
+      border-color: #facc15;
+      box-shadow: 0 0 22px rgba(250,204,21,0.35);
+    }
+
+    @keyframes scan-load {
+      0% { width: 0%; }
+      65% { width: 91%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes drift {
+      from {
+        transform: translateX(0) rotate(-16deg);
+      }
+      to {
+        transform: translateX(-220px) rotate(-16deg);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .confidence {
+        width: 84px;
+        height: 84px;
+        font-size: 22px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .quote {
+        grid-column: span 1;
+        font-size: 18px;
+      }
+
+      .card p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================================================== -->
+  <!-- TEIL 1: KOMPAKTE LIVE ANALYSE                         -->
+  <!-- ===================================================== -->
+
+  <section class="top-section">
+    <div class="ai-box">
+      <h1>🚧 KONTROLLPUNKT- BLOCKER ANALYSIS</h1>
+      <h2>Checkpoint Defense &amp; Blocking Algorithm</h2>
+
+      <p>Scanning block authorization...</p>
+      <div class="bar">
+        <div class="fill one"></div>
+      </div>
+
+      <p>Checking access denied probability...</p>
+      <div class="bar">
+        <div class="fill two"></div>
+      </div>
+
+      <p>Calculating bureaucratic reaction delay...</p>
+      <div class="bar">
+        <div class="fill three"></div>
+      </div>
+
+      <div class="result">
+        ✅ AI RESULT:<br />
+        Strong checkpoint behavior detected.<br />
+        Movement requires approval form B-Volley-42.<br /><br />
+        Recommended strategy:<br />
+        BYPASS THE BLOCK. ATTACK THROUGH THE CLOUD.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- TEIL 2: DETAILLIERTES DASHBOARD                       -->
+  <!-- ===================================================== -->
+
+  <main class="page checkpoint">
+    <div class="panel">
+
+      <div class="header">
+        <div>
+          <div class="tag">BEACH DIGGLER AI // CHECKPOINT SCAN</div>
+          <h1>🚧 Kontrollpunktblocker</h1>
+          <h2>Checkpoint Defense &amp; Blocking Algorithm</h2>
+        </div>
+
+        <div class="confidence">230%</div>
+      </div>
+
+      <div class="scan">
+        <p>Scanning block authorization protocol...</p>
+        <div class="bar">
+          <div class="fill"></div>
+        </div>
+      </div>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>🧠 KI-Analysis</h3>
+          <p>
+            Computer vision identifies good blocking intentions, but unfortunately the checkpoint is 40 cm away from the ball.
+            High precision, low recall.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>💻 GitHub-Results</h3>
+          <p>
+            Branch structure: checkpoint, checkpoint_new, checkpoint_really_new.
+            Merge conflicts in the middle section.
+          </p>
+        </div>
+
+        <div class="card warning">
+          <h3>⚠ Identified Vulnerability</h3>
+          <p>
+            Tends to block plans, tickets, and occasionally even its own view.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🏐 Beach-Diggler-Countermeasures</h3>
+          <p>
+            Compliments on the checkpoint, followed by an automatic Diggler hotfix.
+          </p>
+        </div>
+
+        <div class="quote">
+          „Checkpoint reached. Unfortunately, the ball has already passed.“
+        </div>
+
+        <!-- Optional meme card, currently hidden:
+        <div class="card meme">
+          <h3>🧩 Image-/Meme-Idea</h3>
+          <p>
+            A volleyball as a Git merge conflict: &lt;&lt;&lt;&lt; BLOCK / ==== / &gt;&gt;&gt;&gt; DIGGLER.
+          </p>
+        </div>
+        -->
+
+      </div>
+
+      <a class="back-link" href="index.html">← Back to Opponent Selection</a>
+
+    </div>
+  </main>
+
+</body>
+</html>
