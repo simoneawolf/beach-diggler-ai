@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>TOP SPIN</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #020617;
+      color: #f8fafc;
+    }
+
+    /* ========================= */
+    /* TOP AI BOX SECTION        */
+    /* ========================= */
+
+    .top-section {
+      padding: clamp(16px, 4vw, 32px);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(168,85,247,0.22), transparent 32%),
+        linear-gradient(135deg, #020617, #0f172a, #020617);
+    }
+
+    .ai-box {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+      background: #020617;
+      color: #f8fafc;
+      padding: clamp(18px, 5vw, 28px);
+      border-radius: 22px;
+      text-align: center;
+      border: 3px solid #a855f7;
+      box-shadow: 0 0 36px rgba(168,85,247,0.32);
+    }
+
+    .ai-box h1 {
+      margin: 0;
+      font-size: clamp(24px, 7vw, 30px);
+      color: #a855f7;
+      line-height: 1.15;
+    }
+
+    .ai-box h2 {
+      margin-top: 8px;
+      font-size: clamp(15px, 4.5vw, 18px);
+      color: #facc15;
+      line-height: 1.25;
+    }
+
+    .ai-box p {
+      margin-bottom: 8px;
+      font-size: clamp(13px, 4vw, 16px);
+    }
+
+    .ai-box .bar {
+      width: 100%;
+      height: clamp(16px, 5vw, 22px);
+      background: #1e293b;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0 auto 18px auto;
+      max-width: 520px;
+    }
+
+    .ai-box .fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #a855f7, #38bdf8, #facc15);
+    }
+
+    .ai-box .one {
+      animation: ai-load1 2.6s infinite;
+    }
+
+    .ai-box .two {
+      animation: ai-load2 3.1s infinite;
+    }
+
+    .ai-box .three {
+      animation: ai-load3 3.8s infinite;
+    }
+
+    @keyframes ai-load1 {
+      0% { width: 0%; }
+      50% { width: 99%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes ai-load2 {
+      0% { width: 0%; }
+      60% { width: 93%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes ai-load3 {
+      0% { width: 0%; }
+      70% { width: 81%; }
+      100% { width: 100%; }
+    }
+
+    .ai-box .result {
+      margin-top: 24px;
+      background: #581c87;
+      padding: clamp(14px, 4vw, 18px);
+      border-radius: 16px;
+      font-size: clamp(15px, 4.8vw, 20px);
+      font-weight: bold;
+      line-height: 1.35;
+    }
+
+    /* ========================= */
+    /* LARGE DASHBOARD SECTION   */
+    /* ========================= */
+
+    .page {
+      min-height: 760px;
+      padding: clamp(16px, 4vw, 32px);
+      font-family: Arial, sans-serif;
+      color: #f8fafc;
+      background:
+        conic-gradient(
+          from 90deg at 50% 50%,
+          rgba(168,85,247,0.42),
+          rgba(56,189,248,0.25),
+          rgba(250,204,21,0.20),
+          rgba(168,85,247,0.42)
+        ),
+        radial-gradient(circle at 18% 22%, rgba(56,189,248,0.26), transparent 30%),
+        linear-gradient(135deg, #020617, #312e81, #581c87);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border: 4px dashed rgba(255,255,255,0.16);
+      border-radius: 50%;
+      top: 80px;
+      left: calc(50% - 260px);
+      animation: spin 10s linear infinite;
+      pointer-events: none;
+    }
+
+    .page::after {
+      content: "SPIN  AI  ROTATION  VECTOR  CHAOS  TRAJECTORY  REVIEW ORBIT  MERGE POINT";
+      position: absolute;
+      inset: -80px;
+      color: rgba(255,255,255,0.11);
+      font-size: clamp(24px, 6vw, 34px);
+      line-height: 80px;
+      transform: rotate(-14deg);
+      animation: drift 18s linear infinite;
+      pointer-events: none;
+    }
+
+    .panel {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(18px, 4vw, 28px);
+      border-radius: 28px;
+      background: rgba(2, 6, 23, 0.84);
+      border: 2px solid #a855f7;
+      box-shadow: 0 0 45px rgba(168,85,247,0.42);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .tag {
+      color: #c084fc;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      font-weight: bold;
+    }
+
+    .panel h1 {
+      margin: 6px 0 0 0;
+      font-size: clamp(30px, 8vw, 38px);
+      color: #facc15;
+      line-height: 1.1;
+    }
+
+    .panel h2 {
+      margin: 6px 0 0 0;
+      font-size: clamp(15px, 4vw, 18px);
+      color: #cbd5e1;
+      line-height: 1.25;
+    }
+
+    .confidence {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: conic-gradient(#a855f7, #38bdf8, #facc15, #a855f7);
+      color: #020617;
+      font-size: 28px;
+      font-weight: bold;
+      box-shadow: 0 0 30px rgba(168,85,247,0.42);
+      flex-shrink: 0;
+    }
+
+    .scan p {
+      margin-bottom: 8px;
+      color: #e2e8f0;
+      font-weight: bold;
+      font-size: clamp(14px, 3.8vw, 16px);
+    }
+
+    .scan .bar {
+      width: 100%;
+      height: 22px;
+      background: #1e293b;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .scan .fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #a855f7, #38bdf8, #facc15);
+      animation: scan-load 2.6s infinite;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .card,
+    .quote {
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(168,85,247,0.50);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 0 18px rgba(168,85,247,0.16);
+    }
+
+    .card h3 {
+      margin: 0 0 10px 0;
+      color: #38bdf8;
+      font-size: 17px;
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.45;
+      font-size: 15px;
+    }
+
+    .warning {
+      border-color: #facc15;
+    }
+
+    .meme {
+      border-color: #38bdf8;
+    }
+
+    .quote {
+      grid-column: span 2;
+      text-align: center;
+      font-size: clamp(18px, 4.8vw, 22px);
+      font-weight: bold;
+      color: #facc15;
+      border-color: #facc15;
+      line-height: 1.35;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #581c87, #0f172a);
+      color: #f8fafc;
+      text-decoration: none;
+      border: 2px solid #a855f7;
+      font-weight: bold;
+      box-shadow: 0 0 18px rgba(168,85,247,0.25);
+      transition: 0.2s ease;
+    }
+
+    .back-link:hover {
+      transform: scale(1.04);
+      border-color: #facc15;
+      box-shadow: 0 0 22px rgba(250,204,21,0.35);
+    }
+
+    @keyframes scan-load {
+      0% { width: 0%; }
+      60% { width: 96%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes drift {
+      from {
+        transform: translateX(0) rotate(-14deg);
+      }
+      to {
+        transform: translateX(-220px) rotate(-14deg);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .confidence {
+        width: 84px;
+        height: 84px;
+        font-size: 22px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .quote {
+        grid-column: span 1;
+        font-size: 18px;
+      }
+
+      .card p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================================================== -->
+  <!-- TEIL 1: KOMPAKTE LIVE ANALYSE                         -->
+  <!-- ===================================================== -->
+
+  <section class="top-section">
+    <div class="ai-box">
+      <h1>🌀 TOP SPIN ANALYSIS</h1>
+      <h2>Rotational Chaos &amp; Ball Trajectory Prediction</h2>
+
+      <p>Measuring spin intensity...</p>
+      <div class="bar">
+        <div class="fill one"></div>
+      </div>
+
+      <p>Predicting curved ball trajectories...</p>
+      <div class="bar">
+        <div class="fill two"></div>
+      </div>
+
+      <p>Checking dizziness risk in defense...</p>
+      <div class="bar">
+        <div class="fill three"></div>
+      </div>
+
+      <div class="result">
+        ✅ AI RESULT:<br />
+        Severe ball rotation detected.<br />
+        Receiver orientation may be compromised.<br /><br />
+        Recommended strategy:<br />
+        STAY LOW. DIG STRAIGHT. DO NOT GET SPUN.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <!-- TEIL 2: DETAILLIERTES DASHBOARD                       -->
+  <!-- ===================================================== -->
+
+  <main class="page topspin">
+    <div class="panel">
+
+      <div class="header">
+        <div>
+          <div class="tag">BEACH DIGGLER AI // ROTATION SCAN</div>
+          <h1>🌀 TOP SPIN</h1>
+          <h2>Rotational Chaos &amp; Ball Trajectory Prediction</h2>
+        </div>
+
+        <div class="confidence">230%</div>
+      </div>
+
+      <div class="scan">
+        <p>Calculating spin-induced dizziness risk...</p>
+        <div class="bar">
+          <div class="fill"></div>
+        </div>
+      </div>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>🧠 KI-Analysis</h3>
+          <p>
+            AI confirms: a dangerous amount of spin.
+            At the same time, the decision-making process is going in circles.
+            Forecast: 52% risk, 100% deception.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>💻 GitHub-Results</h3>
+          <p>
+            There are many issues tagged “spinning.”
+            Pull requests have been stuck in the review loop since Q1.
+          </p>
+        </div>
+
+        <div class="card warning">
+          <h3>⚠ Identified Vulnerability</h3>
+          <p>
+            A strong topspin - when no one asks where the ball is actually supposed to go.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>🏐 Beach-Diggler-Countermeasures</h3>
+          <p>
+            Stay calm, read the ball, figure out the algorithm.
+          </p>
+        </div>
+
+        <div class="quote">
+          “TOP SPIN is heating up - Beach-Diggler scores the point.”
+        </div>
+
+        <!-- Optional meme card, currently hidden:
+        <div class="card meme">
+          <h3>🌀 Image-/Meme-Idea</h3>
+          <p>
+            A ball as a rotating loading symbol, underneath: “Please wait… point for Beach-Diggler”.
+          </p>
+        </div>
+        -->
+
+      </div>
+
+      <a class="back-link" href="index.html">← Back to Opponent Selection</a>
+
+    </div>
+  </main>
+
+</body>
+</html>
