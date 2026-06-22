@@ -18,19 +18,30 @@
       min-height: 100%;
     }
 
-    body {
+   
+body {
   font-family: Arial, sans-serif;
   min-height: 100vh;
-  background:
+
+  background-image:
     linear-gradient(
-      rgba(2, 6, 23, 0.25),
-      rgba(2, 6, 23, 0.45)
+      rgba(2, 6, 23, 0.62),
+      rgba(2, 6, 23, 0.78)
     ),
     url("assets/einhorn.png");
 
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background-size:
+    cover,
+    200px auto;
+
+  background-position:
+    center,
+    center;
+
+  background-repeat:
+    no-repeat,
+    repeat;
+
   background-color: #020617;
 
   color: #ffffff;
@@ -40,6 +51,7 @@
   padding: clamp(18px, 5vw, 42px);
   overflow-x: hidden;
 }
+
 
     .warning-box {
       width: min(900px, 100%);
