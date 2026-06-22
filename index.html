@@ -299,99 +299,83 @@
       }
     }
 
-    <!--Startseite-->
     
-    .hero-click-wrapper {.hero%;
-      aspect-ratio: 3 / 2;
-      overflow: hidden;
-      margin-bottom: clamp(22px, 5vw, 42px);
-      background: #020617;
-    }
-    
-    .hero-click-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
-    }
-    
-    .hero-hotspot {
-      position: absolute;
-      z-index: 5;
-      display: block;
-      text-decoration: none;
-      cursor: pointer;
-      border-radius: 12px;
-    }
-    
-    /* Nur zum Testen aktivieren */
-    /*
-    .hero-hotspot {
-      background: rgba(255, 0, 0, 0.25);
-      border: 2px solid red;
-    }
-      */
-    
-    
-    /* The ExPendables2 */
-    .hotspot-expendables {
-      left: 44.1%;
-      top: 62.5%;
-      width: 6.2%;
-      height: 15.5%;
-    }
-    
-    /* Kuhl and the Gang */
-    .hotspot-kuhl {
-      left: 51.1%;
-      top: 62.5%;
-      width: 6.5%;
-      height: 15.5%;
-    }
-    
-    /* Kontrollpunktblocker */
-    .hotspot-checkpoint {
-      left: 58.4%;
-      top: 62.5%;
-      width: 6.8%;
-      height: 15.5%;
-    }
-    
-    /* Team Fungi */
-    .hotspot-fungi {
-      left: 65.9%;
-      top: 62.5%;
-      width: 6.9%;
-      height: 15.5%;
-    }
-    
-    /* TOP SPIN */
-    .hotspot-topspin {
-      left: 73.4%;
-      top: 62.5%;
-      width: 6.7%;
-      height: 15.5%;
-    }
-      position: relative;
+  /* ========================= */
+  /* STARTSEITE CLICKABLE HERO */
+  /* ========================= */
+  
+  .hero-click-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: clamp(22px, 5vw, 42px);
+    background: #020617;
+    overflow: hidden;
+    line-height: 0;
+  }
+  
+  .hero-click-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .hero-hotspot {
+    position: absolute;
+    z-index: 5;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+  }
+  
+  /* Zum Einstellen sichtbar lassen */
+  .hero-hotspot {
+    background: rgba(255, 0, 0, 0.25);
+    border: 2px solid red;
+  }
 
 
-    <!--Startseite-->
+  
   </style>
 </head>
 
 <body>
-   <!-- Startseitenbild -->  
-<div class="hero-click-wrapper">
-   <img class="hero-image full-width-hero" src="assets/Startseite_v2.png" alt="Beach Diggler AI Startseite">
+  
+<!-- Startseitenbild mit dynamischen klickbaren Bereichen -->
+<div class="hero-click-wrapper" id="heroWrapper">
+  <img
+    id="heroImage"
+    class="hero-click-image"
+    src="assets/Startseite_v2.png"
+    alt="Beach Diggler AI Startseite"
+  >
 
-  <a class="hero-hotspot hotspot-expendables" href="expendables.html" aria-label="Analyze The ExPendables2"></a>
-  <a class="hero-hotspot hotspot-kuhl" href="kuhl-and-the-gang.html" aria-label="Analyze Kuhl and the Gang"></a>
-  <a class="hero-hotspot hotspot-checkpoint" href="checkpoint.html" aria-label="Analyze Kontrollpunktblocker"></a>
-  <a class="hero-hotspot hotspot-fungi" href="fungi.html" aria-label="Analyze Team Fungi"></a>
-  <a class="hero-hotspot hotspot-topspin" href="topspin.html" aria-label="Analyze TOP SPIN"></a>
+  <a class="hero-hotspot hotspot-expendables"
+     href="expendables.html"
+     aria-label="Analyze The ExPendables2"
+     data-x="44.1" data-y="62.5" data-w="6.2" data-h="15.5"></a>
+
+  <a class="hero-hotspot hotspot-kuhl"
+     href="kuhl-and-the-gang.html"
+     aria-label="Analyze Kuhl and the Gang"
+     data-x="51.1" data-y="62.5" data-w="6.5" data-h="15.5"></a>
+
+  <a class="hero-hotspot hotspot-checkpoint"
+     href="checkpoint.html"
+     aria-label="Analyze Kontrollpunktblocker"
+     data-x="58.4" data-y="62.5" data-w="6.8" data-h="15.5"></a>
+
+  <a class="hero-hotspot hotspot-fungi"
+     href="fungi.html"
+     aria-label="Analyze Team Fungi"
+     data-x="65.9" data-y="62.5" data-w="6.9" data-h="15.5"></a>
+
+  <a class="hero-hotspot hotspot-topspin"
+     href="topspin.html"
+     aria-label="Analyze TOP SPIN"
+     data-x="73.4" data-y="62.5" data-w="6.7" data-h="15.5"></a>
 </div>
+
 
 
   <main class="page-wrapper">
@@ -493,5 +477,40 @@
 
 
   </main>
+  
+<script>
+  function positionHeroHotspots() {
+    const image = document.getElementById("heroImage");
+    const wrapper = document.getElementById("heroWrapper");
+    const hotspots = wrapper.querySelectorAll(".hero-hotspot");
+
+    const imageRect = image.getBoundingClientRect();
+
+    wrapper.style.height = imageRect.height + "px";
+
+    hotspots.forEach((hotspot) => {
+      const x = parseFloat(hotspot.dataset.x);
+      const y = parseFloat(hotspot.dataset.y);
+      const w = parseFloat(hotspot.dataset.w);
+      const h = parseFloat(hotspot.dataset.h);
+
+      hotspot.style.left = (x / 100) * imageRect.width + "px";
+      hotspot.style.top = (y / 100) * imageRect.height + "px";
+      hotspot.style.width = (w / 100) * imageRect.width + "px";
+      hotspot.style.height = (h / 100) * imageRect.height + "px";
+    });
+  }
+
+  window.addEventListener("load", positionHeroHotspots);
+  window.addEventListener("resize", positionHeroHotspots);
+
+  const heroImage = document.getElementById("heroImage");
+  if (heroImage.complete) {
+    positionHeroHotspots();
+  } else {
+    heroImage.addEventListener("load", positionHeroHotspots);
+  }
+</script>
+
 </body>
 </html>
