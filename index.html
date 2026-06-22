@@ -403,6 +403,7 @@
             </figure>
     
           </div>
+          </section>
 
 
     <!-- Live Opponent Analysis -->
@@ -482,9 +483,13 @@
   function positionHeroHotspots() {
     const image = document.getElementById("heroImage");
     const wrapper = document.getElementById("heroWrapper");
-    const hotspots = wrapper.querySelectorAll(".hero-hotspot");
 
+    if (!image || !wrapper) return;
+
+    const hotspots = wrapper.querySelectorAll(".hero-hotspot");
     const imageRect = image.getBoundingClientRect();
+
+    if (imageRect.width === 0 || imageRect.height === 0) return;
 
     wrapper.style.height = imageRect.height + "px";
 
@@ -503,12 +508,25 @@
 
   window.addEventListener("load", positionHeroHotspots);
   window.addEventListener("resize", positionHeroHotspots);
+  window.addEventListener("orientationchange", positionHeroHotspots);
 
   const heroImage = document.getElementById("heroImage");
-  if (heroImage.complete) {
-    positionHeroHotspots();
-  } else {
-    heroImage.addEventListener("load", positionHeroHotspots);
+
+  if (heroImage) {
+    if (heroImage.complete) {
+      positionHeroHotspots();
+    } else {
+      heroImage.addEventListener("load", positionHeroHotspots);
+    }
+  }
+
+  if ("ResizeObserver" in window) {
+    const heroWrapper = document.getElementById("heroWrapper");
+    const observer = new ResizeObserver(positionHeroHotspots);
+
+    if (heroWrapper) {
+      observer.observe(heroWrapper);
+    }
   }
 </script>
 
